@@ -1,6 +1,11 @@
 # restaurants-api
 ## Version: 1.0
 
+#### Setup
+
+```bash
+npm install && npm start
+```
 
 ### /restaurants
 
@@ -320,50 +325,3 @@ Update User
 | Code | Description |
 | ---- | ----------- |
 | 200 |  |
-
-### Models
-
-
-#### CreateRestaurantRequest
-
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| name | string |  | Yes |
-| address | object |  | Yes |
-
-#### CreateReviewRequest
-
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| name | string |  | Yes |
-| restaurant_id | string |  | Yes |
-| user_id | string |  | Yes |
-| text | string |  | Yes |
-
-#### RegisterUserRequest
-
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| name | string |  | Yes |
-| email | string |  | Yes |
-| password | string |  | Yes |
-
-#### UpdateRestaurantRequest
-
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| name | string |  | Yes |
-
-#### UpdateReviewRequest
-
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| text | string |  | Yes |
-| user_id | string |  | Yes |
-
-#### UpdateUserRequest
-
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| text | string |  | Yes |
-| user_id | string |  | Yes |
