@@ -1,0 +1,421 @@
+openapi: 3.0.0
+info:
+  title: restaurants-api
+  contact: {}
+  version: '1.0'
+servers:
+- url: https://alejandro-restaurant-api.herokuapp.com/api/v1
+  variables: {}
+paths:
+  /restaurants:
+    get:
+      tags:
+      - Restaurant
+      summary: Get All Restaurants
+      operationId: GetAllRestaurants
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+    post:
+      tags:
+      - Restaurant
+      summary: Create Restaurant
+      operationId: CreateRestaurant
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRestaurantRequest'
+            example:
+              name: Pizza hut
+              address:
+                building: '5547'
+                street: Ramon Castilla Avenue
+                required: true
+              required: true
+              
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /restaurants/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The restaurant ID
+   
+    get:
+      tags:
+      - Restaurant
+      summary: Get Restaurant
+      operationId: GetRestaurant
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+    patch:
+      tags:
+      - Restaurant
+      summary: Update Restaurant
+      operationId: UpdateRestaurant
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateRestaurantRequest'
+            example:
+              name: VillaMaria del triunfo
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+    delete:
+      tags:
+      - Restaurant
+      summary: Delete Restaurant
+      operationId: DeleteRestaurant
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+
+ 
+  /restaurants/cuisines:
+    get:
+      tags:
+      - Restaurant
+      summary: Get Restaurant Cuisine
+      operationId: GetRestaurantCuisine
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /users/login:
+    post:
+      tags:
+      - Auth
+      summary: Login User
+      operationId: LoginUser
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /users/register:
+    post:
+      tags:
+      - Auth
+      summary: Register User
+      operationId: RegisterUser
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterUserRequest'
+            example:
+              name: Hector Harm
+              email: Harm@gmail.com
+              password: hola
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+
+  /restaurants/review:
+    get:
+      tags:
+      - Review
+      summary: Get All Reviews
+      operationId: GetAllReviews
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /restaurants/review/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The review ID
+    get:
+      tags:
+      - Review
+      summary: Get Review
+      operationId: GetReview
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+    post:
+      tags:
+      - Review
+      summary: Create Review
+      operationId: CreateReview
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateReviewRequest'
+            example:
+              name: Pablo
+              restaurant_id: 5eb3d668b31de5d588f4292e
+              user_id: 5eb3d668b32de51588f22948
+              text: I actually liked it a bit
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+    patch:
+      tags:
+      - Review
+      summary: Update Review
+      operationId: UpdateReview
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateReviewRequest'
+            example:
+              text: never mind
+              user_id: 61eb300ac817a8ab88a0731e
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+
+    delete:
+      tags:
+      - Review
+      summary: Delete Review
+      operationId: DeleteReview
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /users/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The user ID
+    delete:
+      tags:
+      - User
+      summary: Delete User
+      operationId: DeleteUser
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    get:
+      tags:
+      - User
+      summary: Get One User
+      operationId: GetOneUser
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+    patch:
+      tags:
+      - User
+      summary: Update User
+      operationId: UpdateUser
+      parameters:
+      - name: Authorization
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: hola?
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserRequest'
+            example:
+              text: never mind
+              user_id: 61eb300ac817a8ab88a0731e
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+components:
+  schemas:
+    CreateRestaurantRequest:
+      title: CreateRestaurantRequest
+      required:
+      - name
+      - address
+      type: object
+      properties:
+        name:
+          type: string
+        address:
+          type: object
+      example:
+        name: Pizza hut
+        address:
+          building: '5547'
+          street: Ramon Castilla Avenue
+
+        
+    CreateReviewRequest:
+      title: CreateReviewRequest
+      required:
+      - name
+      - restaurant_id
+      - user_id
+      - text
+      type: object
+      properties:
+        name:
+          type: string
+        restaurant_id:
+          type: string
+        user_id:
+          type: string
+        text:
+          type: string
+      example:
+        name: Pablo
+        restaurant_id: 5eb3d668b31de5d588f4292e
+        user_id: 5eb3d668b32de51588f22948
+        text: I actually liked it a bit
+    RegisterUserRequest:
+      title: RegisterUserRequest
+      required:
+      - name
+      - email
+      - password
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        name: si?..
+        email: alejandro1@gmail.com
+        password: hola
+    UpdateRestaurantRequest:
+      title: UpdateRestaurantRequest
+      required:
+      - name
+      type: object
+      properties:
+        name:
+          type: string
+      example:
+        name: VillaMaria del triunfo
+    UpdateReviewRequest:
+      title: UpdateReviewRequest
+      required:
+      - text
+      - user_id
+      type: object
+      properties:
+        text:
+          type: string
+        user_id:
+          type: string
+      example:
+        text: never mind
+        user_id: 61eb300ac817a8ab88a0731e
+    UpdateUserRequest:
+      title: UpdateUserRequest
+      required:
+      - text
+      - user_id
+      type: object
+      properties:
+        text:
+          type: string
+        user_id:
+          type: string
+      example:
+        text: never mind
+        user_id: 61eb300ac817a8ab88a0731e
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+security: []
+tags:
+
+- name: Restaurant
+  description: ''
+- name: Auth
+  description: ''
+- name: Review
+  description: ''
+- name: User
+  description: ''
